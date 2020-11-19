@@ -1,0 +1,24 @@
+<p>forum works!</p>
+<ul class="topics" *ngIf="topics$ | async as topics; else loadingTopic">
+    <li *ngFor="let topic of topics; let i = index">
+        <p class="title">
+            <span>{{topic.title}}</span>
+        </p>
+        <div class="description">
+            <div>
+            <p>
+                {{topic.description}}
+            </p>
+            </div>
+            <div>
+                <a routerLink="topic/{{topic.id}}">Ler</a>
+            </div>
+        </div>
+    </li>
+</ul>
+<ng-template #loadingTopic>
+    <div class="loading">
+        <div></div>
+    </div>
+</ng-template>
+

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "challenge-like"
+    }
+  },
+  "defaultProject": "challenge-like",
+  "cli": {
+    "analytics": false
+  }
 }
