@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChallengeLikeModule } from 'challenge-like';
 
 import { TopicRoutingModule } from './topic-routing.module';
 import { TopicComponent } from './topic.component';
@@ -9,7 +10,8 @@ import { TopicComponent } from './topic.component';
   declarations: [TopicComponent],
   imports: [
     CommonModule,
-    TopicRoutingModule
+    TopicRoutingModule,
+    ChallengeLikeModule
   ]
 })
 export class TopicModule { }

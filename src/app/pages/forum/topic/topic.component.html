@@ -5,13 +5,8 @@
     <p>
         {{post.content}}
     </p>
-    <ng-container *ngIf="like$ | async as like; else loadingLike">
-
-    </ng-container>
-    <div [ngClass]="{liked : like.liked}">
-        <button (click)="like()" class="like">Like</button>
-        <button (click)="dislike()" class="dislike">Dislike</button>
-    </div>
+    <challenge-like [endpoint]="endpoint" [trackCode]="trackCode" [post]="post" [user]="user"></challenge-like>
+    
 </ng-container>
 <ng-template #loadingPost>
     <div class="loading">

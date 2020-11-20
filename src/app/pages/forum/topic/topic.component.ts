@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Like, Post } from '@app/core/models';
-import { LikeService, PostService, UserService } from '@app/core/services';
+import { Post, User } from '@app/core/models';
+import { PostService, UserService } from '@app/core/services';
+import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,29 +13,22 @@ import { Observable } from 'rxjs';
 export class TopicComponent implements OnInit {
 
   public post$: Observable<Post>;
-  public like$: Observable<Like>;
+  public user: User;
+  public endpoint: string;
+  public trackCode: string = 'xpto';
 
-  constructor(private postService: PostService, private likeService: LikeService, private userService: UserService, private route: ActivatedRoute) {
-
-  }
+  constructor(private postService: PostService, private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.post$ = this.postService.getPost(params['postId']);
       this.userService.getId().subscribe(
         user => {
-          this.like$ = this.likeService.getLike(params['postId'], user.id)
+          this.user = user;
         }
       );
     });
-  }
-
-  like(){
-    
-  }
-
-  dislike(){
-    
+    this.endpoint = environment.LIKE_API;
   }
 
 }
